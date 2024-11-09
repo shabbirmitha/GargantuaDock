@@ -19,6 +19,10 @@ class Sysinfo {
         this.parent = document.getElementById(parentId);
         this.parent.innerHTML += `<div id="mod_sysinfo">
             <div>
+                <h1>1970</h1>
+                <h2>JAN 1</h2>
+            </div>
+            <div>
                 <h1>UPTIME</h1>
                 <h2>0:0:0</h2>
             </div>
@@ -44,7 +48,9 @@ class Sysinfo {
     }
     updateDate() {
         let time = new Date();
+
         document.querySelector("#mod_sysinfo > div:first-child > h1").innerHTML = time.getFullYear();
+
         let month = time.getMonth();
         switch(month) {
             case 0:
@@ -85,6 +91,7 @@ class Sysinfo {
                 break;
         }
         document.querySelector("#mod_sysinfo > div:first-child > h2").innerHTML = month+" "+time.getDate();
+
         let timeToNewDay = ((23 - time.getHours()) * 3600000) + ((59 - time.getMinutes()) * 60000);
         setTimeout(() => {
             this.updateDate();
@@ -107,7 +114,7 @@ class Sysinfo {
         if (uptime.hours.toString().length !== 2) uptime.hours = "0"+uptime.hours;
         if (uptime.minutes.toString().length !== 2) uptime.minutes = "0"+uptime.minutes;
 
-        document.querySelector("#mod_sysinfo > div:nth-child(1) > h2").innerHTML = uptime.days + '<span style="opacity:0.5;">d</span>' + uptime.hours + '<span style="opacity:0.5;">:</span>' + uptime.minutes;
+        document.querySelector("#mod_sysinfo > div:nth-child(2) > h2").innerHTML = uptime.days + '<span style="opacity:0.5;">d</span>' + uptime.hours + '<span style="opacity:0.5;">:</span>' + uptime.minutes;
     }
     updateBattery() {
         window.si.battery().then(bat => {
@@ -115,10 +122,8 @@ class Sysinfo {
             if (bat.hasBattery) {
                 if (bat.isCharging) {
                     indicator.innerHTML = "CHARGE";
-                    indicator.setAttribute("class", "ueg-icon-charging");
                 } else if (bat.acConnected) {
                     indicator.innerHTML = "WIRED";
-                    indicator.setAttribute("class", "ueg-icon-power");
                 } else {
                     indicator.innerHTML = bat.percent+"%";
                 }

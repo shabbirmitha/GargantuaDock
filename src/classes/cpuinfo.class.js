@@ -99,9 +99,7 @@ class Cpuinfo {
             // Init updater
             this.updatingCPUload = false;
             this.updateCPUload();
-            if (process.platform !== "win32") {
-                this.updateCPUtemp();
-            }
+            if (process.platform !== "win32") {this.updateCPUtemp();}
             this.updatingCPUspeed = false;
             this.updateCPUspeed();
             this.updatingCPUtasks = false;

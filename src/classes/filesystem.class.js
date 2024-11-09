@@ -564,7 +564,7 @@ class FilesystemDisplay {
                     let html = `<div>
                         <div class="pdf_options">
                             <button class="zoom_in">
-                                <svg viewBox="0 0 ${this.icons["zoom-in"].width} ${this.icons["zoom-in"].height}" fill="${this.iconcolor}" >
+                                <svg viewBox="0 0 ${this.icons["zoom-in"].width} ${this.icons["zoom-in"].height}" fill="${this.iconcolor}">
                                     ${this.icons["zoom-in"].svg}
                                 </svg>
                             </button>
@@ -651,7 +651,8 @@ class FilesystemDisplay {
                 case "audio":
                     html = `<div>
                                 <div class="media_container" data-fullscreen="false">
-                                    <audio class="media fsDisp_mediaDisp" preload="auto" src="${window._encodePathURI(path || block.path)}">
+                                    <audio class="media fsDisp_mediaDisp" preload="auto">
+                                        <source src="${window._encodePathURI(path || block.path)}">
                                         Unsupported audio format!
                                     </audio>
                                     <div class="media_controls" data-state="hidden">
@@ -682,10 +683,10 @@ class FilesystemDisplay {
                 case "video":
                     html = `<div>
                                 <div class="media_container" data-fullscreen="false">
-                                    <video class="media fsDisp_mediaDisp" preload="auto" src="${window._encodePathURI(path || block.path)}">
+                                    <video class="media fsDisp_mediaDisp" preload="auto">
+                                        <source src="${window._encodePathURI(path || block.path)}">
                                         Unsupported video format!
                                     </video>
-                                  
                                     <div class="media_controls" data-state="hidden">
                                         <div class="playpause media_button" data-state="play">
                                             <svg viewBox="0 0 ${this.icons["play"].width} ${this.icons["play"].height}" fill="${this.iconcolor}">

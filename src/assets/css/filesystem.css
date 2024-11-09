@@ -4,6 +4,7 @@ section#filesystem {
     width: 43vw;
     height: 30vh;
     margin-right: 0.5vw;
+
     opacity: 0;
     transition: opacity .5s cubic-bezier(0.4, 0, 1, 1);
 }
@@ -12,6 +13,7 @@ section#filesystem > h3.title {
     width: 43vw;
     padding-right: 0;
 }
+
 section#filesystem.hideDotfiles > h3.title > p#fs_disp_title_dir::before {
     content: "dotfiles hidden - ";
 }
@@ -177,12 +179,13 @@ div.fs_disp_other > h3 {
 
 div#fs_space_bar {
     position: relative;
-    top: 3.5vh;
-    text-align: .15vw;
+    top: 1.5vh;
+    left: .15vw;
 }
 
 div#fs_space_bar > h1 {
     display: none;
+
     background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.1);
     height: 3.2vh;
     width: 100%;
@@ -247,7 +250,9 @@ div#fs_space_bar > progress:not([value])::after {
 
 div#fs_space_bar > progress::-webkit-progress-bar {
     background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.4);
-    height: .75vh;
+    height: .7vh;
+    position: relative;
+    top: .7vh;
 }
 
 div#fs_space_bar > progress::-webkit-progress-value {

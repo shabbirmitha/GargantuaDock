@@ -88,7 +88,7 @@ class LocationGlobe {
                 } catch {
                     // do nothing
                 }
-                let geo = (data !== null ? data.location :{});
+                let geo = (data !== null ? data.location : {});
                 if (geo.latitude && geo.longitude) {
                     const lat = Number(geo.latitude);
                     const lon = Number(geo.longitude);
@@ -191,8 +191,6 @@ class LocationGlobe {
     }
     async updateConOnlineConnection() {
         let newgeo = window.mods.netstat.ipinfo.geo;
-      
-
         newgeo.latitude = Math.round(newgeo.latitude*10000)/10000;
         newgeo.longitude = Math.round(newgeo.longitude*10000)/10000;
 
@@ -204,8 +202,8 @@ class LocationGlobe {
             //this.addRandomConnectedPoints();
             this.conns = [];
 
-            this._locPin = this.globe.addPin(newgeo.latitude, newgeo.longitude,"", 1.2);
-            this._locMarker = this.globe.addMarker(newgeo.latitude, newgeo.longitude,"", false, 1.2);
+            this._locPin = this.globe.addPin(newgeo.latitude, newgeo.longitude, "", 1.2);
+            this._locMarker = this.globe.addMarker(newgeo.latitude, newgeo.longitude, "", false, 1.2);
         }
 
         this.lastgeo = newgeo;

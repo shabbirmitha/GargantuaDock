@@ -16,7 +16,6 @@ class MediaPlayer {
         const fullscreen = document.getElementById(modalElementId).querySelector(".fs");
         const mediaTime = document.getElementById(modalElementId).querySelector(".media_time");
 
-
         let volumeDrag = false;
         let fullscreenVisible = true;
         let fullscreenTimeout;
@@ -30,7 +29,6 @@ class MediaPlayer {
                     <svg viewBox="0 0 ${icons["play"].width} ${icons["play"].height}" fill="${iconcolor}">
                         ${icons["play"].svg}
                     </svg>`;
-              
             } else {
                 playpause.setAttribute("data-state", "pause");
                 playpause.innerHTML = `
@@ -156,10 +154,7 @@ class MediaPlayer {
         progress.addEventListener("click", function(e) {
             const pos = (e.pageX - (this.offsetLeft + this.offsetParent.offsetLeft)) / this.offsetWidth;
             media.currentTime = pos * media.duration;
-            
         });
-      
-
         playpause.addEventListener("click", () => {
             (media.paused || media.ended) ? media.play(): media.pause();
         });
