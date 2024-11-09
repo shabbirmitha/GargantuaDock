@@ -112,6 +112,7 @@ class Terminal {
                 lineHeight: window.theme.terminal.lineHeight || 1,
                 scrollback: 1500,
                 bellStyle: "none",
+                allowProposedApi:"true",
                 theme: {
                     foreground: window.theme.terminal.foreground,
                     background: window.theme.terminal.background,
@@ -151,7 +152,7 @@ class Terminal {
             // Prevent soft-keyboard on touch devices #733
             document.querySelectorAll('.xterm-helper-textarea').forEach(textarea => textarea.setAttribute('readonly', 'readonly'))
             this.term.focus();
-
+           
             this.Ipc.send("terminal_channel-"+this.port, "Renderer startup");
             this.Ipc.on("terminal_channel-"+this.port, (e, ...args) => {
                 switch(args[0]) {
