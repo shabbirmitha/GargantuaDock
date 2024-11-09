@@ -14,9 +14,9 @@
   "main": "_boot.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/langyan1022/eDEX-UI.git"
+    "url": "git+https://github.com/shabbirmitha/GargantuaDock.git"
   },
-  "author": "Gabriel 'Squared' SAILLARD <gabriel@saillard.dev> (https://gaby.dev)",
+  "author": "Shabbir (https://shabbir.me)",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/GitSquared/edex-ui/issues"
@@ -29,7 +29,6 @@
     "@electron/remote": "^2.0.12",
     "augmented-ui": "2.0.0",
     "color": "3.2.1",
-    "geolite2-redist": "^2.0.4",
     "howler": "2.2.3",
     "maxmind": "4.3.2",
     "mime-types": "^2.1.33",

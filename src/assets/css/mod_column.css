@@ -3,7 +3,7 @@ section.mod_column {
     top: 2.5vh;
     min-height: 10%;
     max-height: 96%;
-    padding: 1vh;
+    padding: 1.39vh;
     padding-bottom: 0vh;
     box-sizing: border-box;
     position: absolute;
@@ -19,9 +19,6 @@ section.mod_column.activated {
 }
 
 section.mod_column > h3.title {
-    background: rgb(var(--color_r), var(--color_g), var(--color_b));
-    color: var(--color_light_black);
-    padding: 0.5vh;
     top: 0.74vh;
     width: 14.8%;
 }

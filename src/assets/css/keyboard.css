@@ -2,36 +2,9 @@ section#keyboard {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 55.0vw;
+    width: 55.5vw;
     position: relative;
     top: -0.925vh;
-    --aug-tl: 1vh;
-    --aug-tr: 1vh;
-    --aug-br: 1vh;
-    --aug-bl: 1vh;
-    --aug-border-all: 6px;
-    --aug-border-bg: radial-gradient(circle at top left, var(--hot-blue), var(--hot-blue) 2vh, transparent 2vh),
-                       radial-gradient(circle at top right, var(--hot-blue), var(--hot-blue) 2vh, transparent 2vh),
-                       radial-gradient(circle at bottom left, var(--hot-blue), var(--hot-blue) 2vh, transparent 2vh),
-                       radial-gradient(circle at bottom right, var(--hot-blue), var(--hot-blue) 2vh, transparent 2vh);
-    opacity: 1;
-    animation: border-display 2s infinite cubic-bezier(0,0,.49,1.02);
-    animation-delay: 200ms;
-}
-
-@keyframes border-display{
-   0%{--aug-border-all:0px}
-   50%{--aug-border-all:3px; 
-    --aug-tl: 0.5vh;
-    --aug-tr: 0.5vh;
-    --aug-br: 0.5vh;
-    --aug-bl: 0.5vh;}
-   100%{
-    --aug-border-all:6px;
-    --aug-tl: 1vh;
-    --aug-tr: 1vh;
-    --aug-br: 1vh;
-    --aug-bl: 1vh;}
 }
 
 section#keyboard[data-password-mode="true"] {
@@ -45,7 +18,7 @@ div.keyboard_row {
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    margin: 0.3vh 0vh;
+    margin: 0.46vh 0vh;
     height: 5.28vh;
 }
 
@@ -79,7 +52,7 @@ section#keyboard.animation_state_2 > * {
 
 div.keyboard_row:last-child {
     position: relative;
-    /* left: 1.4vh; */
+    left: 2.4vh;
 }
 
 div.keyboard_key {
@@ -89,7 +62,7 @@ div.keyboard_key {
     border-radius: 0.46vh;
     background-color: rgba(var(--color_r), var(--color_g), var(--color_b), 0.0);
     border: 0.18vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.0);
-    margin: 0vh 0.3vh;
+    margin: 0vh 0.46vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,7 +89,7 @@ section#keyboard:not([data-password-mode="true"]) div.keyboard_key.blink {
 }
 
 div.keyboard_key > * {
-    margin: 0vh 0.3vh;
+    margin: 0vh 0.46vh;
     padding: 0vh;
     -webkit-margin-after: 0vh;
     -webkit-margin-before: 0vh;
@@ -178,10 +151,10 @@ div.keyboard_row:not(:nth-child(4)):not(:last-child) > .keyboard_key:last-child,
 div.keyboard_key#keyboard_spacebar {
     border: 0.19vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.5);
 }
-div.keyboard_key#keyboard_spacebar::after{
+/* div.keyboard_key#keyboard_spacebar::after{
     content:"Gargantua";
     font-size: 32px;
-}
+} */
 
 div.keyboard_row#row_1 > div.keyboard_enter {
     border: 0.19vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.5);
@@ -206,8 +179,8 @@ div.keyboard_row#row_2 > div.keyboard_enter:active, div.keyboard_row#row_2 > div
     border-top: 0.3vh solid rgb(var(--color_r), var(--color_g), var(--color_b));
 }
 div.keyboard_key#keyboard_spacebar {
-    width: 25.68vw;
-    min-width: 25.68vw;
+    width: 47.68vh;
+    min-width: 47.68vh;
     height: 3.52vh;
 }
 
@@ -231,7 +204,7 @@ section#keyboard[data-is-shift-on="true"] > div.keyboard_row > div.keyboard_key 
     position: relative;
     top: 0.278vh;
     font-size: 2.4vh;
-    margin: 0vh 0.3vh;
+    margin: 0vh 0.46vh;
 }
 
 section#keyboard[data-is-shift-on="true"] > div.keyboard_row:first-child > div.keyboard_key:last-child > h2, section#keyboard[data-is-caps-lck-on="true"] > div.keyboard_row:first-child > div.keyboard_key:last-child > h2 {
@@ -261,7 +234,7 @@ section#keyboard[data-is-fn-on="true"] > div.keyboard_row > div.keyboard_key > h
     position: relative;
     top: 0.278vh;
     font-size: 2.4vh;
-    margin: 0vh 0.3vh;
+    margin: 0vh 0.46vh;
     opacity: 1;
 }
 

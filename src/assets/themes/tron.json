@@ -3,6 +3,7 @@
         "r": 170,
         "g": 207,
         "b": 209,
+        "tab_active":"#ea910d",
         "black": "#000000",
         "light_black": "#05080d",
         "grey": "#262828"
@@ -29,5 +30,5 @@
         "pin": "#aacfd1",
         "satellite": "#aacfd1"
     },
-    "injectCSS": "ul#main_shell_tabs > li.active{background-color:#f8ae3f !important;}  ul#main_shell_tabs {border-bottom:3px solid #f8ae3f !important;}div.modal_popup button:hover{background-color:#f8ae3f !important;color:black}"
+    "injectCSS": "ul#main_shell_tabs > li.active{background-color:#f8ae3f !important;}  ul#main_shell_tabs {border-bottom:3px solid #f8ae3f !important;}"
 }

@@ -96,20 +96,23 @@ div#mod_ramwatcher_swapcontainer h1 {
 progress#mod_ramwatcher_swapbar {
     width: 100%;
     align-self: center;
-    padding: 0.1vh;
     -webkit-appearance: none;
-    border: .1vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.8);
+    border-right: .1vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.8);
 }
 
 progress#mod_ramwatcher_swapbar::-webkit-progress-bar {
     background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.4);
-    height: .75vh;
+    height: .25vh;
+    position: relative;
+    top: .55vh;
 }
 
 progress#mod_ramwatcher_swapbar::-webkit-progress-value {
-    background: rgb(248, 174, 63);
-    height:  .75vh;
+    background: rgb(var(--color_r), var(--color_g), var(--color_b));
+    height:  .4vh;
     transition: width .5s cubic-bezier(0.4, 0, 1, 1);
+    position: relative;
+    bottom: .4vh;
 }
 
 h3#mod_ramwatcher_swaptext {

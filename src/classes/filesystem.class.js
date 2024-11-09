@@ -657,29 +657,26 @@ class FilesystemDisplay {
                                     <div class="media_wave" style="width:100%; max-width:1100px; height: 300px; overflow-x: auto; overflow-y: hidden; ">
                                     </div>
                                     <div class="media_controls" data-state="hidden">
-                                        <div class="playpause media_button left" data-state="play">
+                                        <div class="playpause media_button" data-state="play">
                                             <svg viewBox="0 0 ${this.icons["play"].width} ${this.icons["play"].height}" fill="${this.iconcolor}">
                                                 ${this.icons["play"].svg}
                                             </svg>
                                         </div>
-                                        <div class="progress_container center">
+                                        <div class="progress_container">
                                             <div class="progress">
                                                 <span class="progress_bar"></span>
                                             </div>
                                         </div>
-                                        <div class="right">
-                                             <div class="media_time">00:00:00</div>
-                                                <div class="volume_icon">
-                                                      <svg viewBox="0 0 ${this.icons["volume"].width} ${this.icons["volume"].height}" fill="${this.iconcolor}">
-                                                          ${this.icons["volume"].svg}
-                                                     </svg>
-                                              </div>
-                                              <div class="volume">
-                                                   <div class="volume_bkg"></div>
-                                                     <div class="volume_bar"></div>
-                                              </div>
+                                        <div class="media_time">00:00:00</div>
+                                        <div class="volume_icon">
+                                            <svg viewBox="0 0 ${this.icons["volume"].width} ${this.icons["volume"].height}" fill="${this.iconcolor}">
+                                                ${this.icons["volume"].svg}
+                                            </svg>
                                         </div>
-                                       
+                                        <div class="volume">
+                                            <div class="volume_bkg"></div>
+                                            <div class="volume_bar"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>`;
@@ -690,19 +687,20 @@ class FilesystemDisplay {
                                     <video class="media fsDisp_mediaDisp" preload="auto" src="${window._encodePathURI(path || block.path)}">
                                         Unsupported video format!
                                     </video>
+                                    <div class="media_wave" style="width:100%; max-width:1100px; height: 300px; overflow-x: auto; overflow-y: hidden;">
+                                    </div>
                                   
                                     <div class="media_controls" data-state="hidden">
-                                        <div class="playpause media_button left" data-state="play">
+                                        <div class="playpause media_button" data-state="play">
                                             <svg viewBox="0 0 ${this.icons["play"].width} ${this.icons["play"].height}" fill="${this.iconcolor}">
                                                 ${this.icons["play"].svg}
                                             </svg>
                                         </div>
-                                        <div class="progress_container center">
+                                        <div class="progress_container">
                                             <div class="progress">
                                                 <span class="progress_bar"></span>
                                             </div>
                                         </div>
-                                        <div class="right right-video">
                                         <div class="media_time">00:00:00</div>
                                         <div class="volume_icon">
                                             <svg viewBox="0 0 ${this.icons["volume"].width} ${this.icons["volume"].height}" fill="${this.iconcolor}">
@@ -717,7 +715,6 @@ class FilesystemDisplay {
                                             <svg viewBox="0 0 ${this.icons["fullscreen"].width} ${this.icons["fullscreen"].height}" fill="${this.iconcolor}">
                                                 ${this.icons["fullscreen"].svg}
                                             </svg>
-                                        </div>
                                         </div>
                                     </div>
                                 </div>

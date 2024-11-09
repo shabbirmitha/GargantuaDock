@@ -13,7 +13,7 @@
   ],
   "main": "src/_boot.js",
   "scripts": {
-    "start": "electron src ",
+    "start": "electron src",
     "install-linux": "npm install && cd src && npm install && ./../node_modules/.bin/electron-rebuild -f -w node-pty && cd ..",
     "preinstall-windows": "npm install --global --production windows-build-tools && npm install --global node-gyp",
     "install-windows": "npm install && cd src && npm install && ..\\node_modules\\.bin\\electron-rebuild -f -w node-pty && cd ..",
@@ -26,16 +26,15 @@
     "postbuild-linux": "rm -R prebuild-src",
     "postbuild-darwin": "rm -R prebuild-src",
     "postbuild-windows": "rmdir /S /Q prebuild-src",
-    "postversion": "git push --follow-tags",
     "test": "rsync -a --info=progress2 src/ prebuild-src --exclude node_modules && node prebuild-minify.js && cd prebuild-src && npm install && snyk test && cd .. && rm -R prebuild-src",
     "init-file-icons": "git submodule update --init",
     "update-file-icons": "git submodule foreach git pull origin master && node file-icons-generator.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/langyan1022/eDEX-UI.git"
+    "url": "git+https://github.com/shabbirmitha/GargantuaDock.git"
   },
-  "author": "Gabriel 'Squared' SAILLARD <gabriel@saillard.dev> (https://gaby.dev)",
+  "author": "Shabbir (https://shabbir.me)",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/GitSquared/edex-ui/issues"
@@ -47,7 +46,7 @@
     "publish": "github",
     "asar": true,
     "compression": "normal",
-    "copyright": "Copyright © 2017-2021 Gabriel 'Squared' SAILLARD <gabriel@saillard.dev> (https://gaby.dev)",
+    "copyright": "Copyright © 2017-2021 Shabbir (https://shabbir.me)",
     "directories": {
       "output": "dist",
       "app": "prebuild-src"

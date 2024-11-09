@@ -2,8 +2,6 @@ const signale = require("signale");
 const {app, BrowserWindow, dialog, shell} = require("electron");
 
 
-
-
 process.on("uncaughtException", e => {
     signale.fatal(e);
     dialog.showErrorBox("eDEX-UI crashed", e.message || "Cannot retrieve error message.");
@@ -67,7 +65,6 @@ if (process.env.https_proxy) delete process.env.https_proxy;
 app.commandLine.appendSwitch("ignore-gpu-blocklist");
 app.commandLine.appendSwitch("enable-gpu-rasterization");
 app.commandLine.appendSwitch("enable-video-decode");
-app.commandLine.appendSwitch('lang', 'zh-CN'); // 设置语言
 // Fix userData folder not setup on Windows
 try {
     fs.mkdirSync(electron.app.getPath("userData"));
@@ -200,7 +197,6 @@ function createWindow(settings) {
 	        enableRemoteModule: true,
             contextIsolation: false,
             backgroundThrottling: false,
-            inputEncoding: 'auto',
             webSecurity: true,
             nodeIntegration: true,
             nodeIntegrationInSubFrames: false,
@@ -245,7 +241,6 @@ app.on('ready', async () => {
         COLORTERM: "truecolor",
         TERM_PROGRAM: "eDEX-UI",
         TERM_PROGRAM_VERSION: app.getVersion(),
-        LANG: 'zh_CN.UTF-8',
     }, settings.env);
 
     signale.pending(`Creating new terminal process on port ${settings.port || '3000'}`);

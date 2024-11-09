@@ -15,7 +15,7 @@ class LocationGlobe {
                 <h1>WORLD VIEW<i>GLOBAL NETWORK MAP</i></h1>
                 <h2>ENDPOINT LAT/LON<i class="mod_globe_headerInfo">0.0000, 0.0000</i></h2>
                 <div id="mod_globe_canvas_placeholder"></div>
-                <h3 data-augmented-ui="border">离&nbsp;&nbsp;&nbsp;&nbsp;线</h3>
+                <h3>OFFLINE</h3>
             </div>
         </div>`;
 
@@ -204,8 +204,8 @@ class LocationGlobe {
             //this.addRandomConnectedPoints();
             this.conns = [];
 
-            this._locPin = this.globe.addPin(newgeo.latitude, newgeo.longitude, newgeo.country+" "+newgeo.city, 1.2);
-            this._locMarker = this.globe.addMarker(newgeo.latitude, newgeo.longitude,newgeo.country+" "+newgeo.city, false, 1.2);
+            this._locPin = this.globe.addPin(newgeo.latitude, newgeo.longitude,"", 1.2);
+            this._locMarker = this.globe.addMarker(newgeo.latitude, newgeo.longitude,"", false, 1.2);
         }
 
         this.lastgeo = newgeo;

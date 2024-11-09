@@ -45,20 +45,16 @@ class Netstat {
         this.geoLookup = {
             get: () => null
         };
-        // let geolite2 = require("geolite2-redist");
+        let geolite2 = require("geolite2-redist");
         let maxmind = require("maxmind");
-        // geolite2.downloadDbs(require("path").join(require("@electron/remote").app.getPath("userData"), "geoIPcache")).then(() => {
-        //    geolite2.open('GeoLite2-City', path => {
-        //         return maxmind.open(path);
-        //     }).catch(e => {throw e}).then(lookup => {
-        //         this.geoLookup = lookup;
-        //         this.lastconn.finished = true;
-        //     });
-        // });
-          maxmind.open(require("path").join(require("@electron/remote").app.getPath("userData"), "geoIPcache","GeoLite2-City.mmdb")).then((lookup) => {
+        geolite2.downloadDbs(require("path").join(require("@electron/remote").app.getPath("userData"), "geoIPcache")).then(() => {
+           geolite2.open('GeoLite2-City', path => {
+                return maxmind.open(path);
+            }).catch(e => {throw e}).then(lookup => {
                 this.geoLookup = lookup;
                 this.lastconn.finished = true;
-          });
+            });
+        });
     }
     updateInfo() {
         window.si.networkInterfaces().then(async data => {
@@ -119,10 +115,9 @@ class Netstat {
                                 let data = JSON.parse(rawData);
                                 let ip = data.ip;
                                 document.querySelector("#mod_netstat_innercontainer > div:nth-child(2) > h2").innerHTML = window._escapeHtml(ip);
-                                let location={latitude:"39.918058",longitude:"116.397026",city:"北京",country:"中国"}
+                                let location={latitude:"39.918058",longitude:"116.397026"}
                                 try{
-                                    let geo=this.geoLookup.get(data.ip);
-                                    location={latitude:geo.location.latitude,longitude:geo.location.longitude,city:geo.city?geo.city.names['zh-CN']:"",country:geo.country?geo.country.names['zh-CN']:""}
+                                    location=this.geoLookup.get(data.ip).location;
                                 }catch(e){}
 
                                 this.ipinfo = {

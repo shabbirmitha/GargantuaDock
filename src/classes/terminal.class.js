@@ -8,11 +8,7 @@ class Terminal {
             const {FitAddon} = require("xterm-addon-fit");
             const {LigaturesAddon} = require("xterm-addon-ligatures");
             const {WebglAddon} = require("xterm-addon-webgl");
-            const { WebLinksAddon } = require ("xterm-addon-web-links");
-            const { Unicode11Addon } = require ("xterm-addon-unicode11");
-            const { CanvasAddon } = require ("xterm-addon-canvas");
             
-            const remote = require("@electron/remote");
             this.Ipc = require("electron").ipcRenderer;
            
             this.port = opts.port || 3000;
@@ -109,17 +105,13 @@ class Terminal {
                 cursorStyle: window.theme.terminal.cursorStyle || "block",
                 allowTransparency: window.theme.terminal.allowTransparency || false,
                 fontFamily: window.theme.terminal.fontFamily || "Fira Mono",
-                fontSize: window.theme.terminal.fontSize || window.settings.termFontSize || 18,
+                fontSize: window.theme.terminal.fontSize || window.settings.termFontSize || 15,
                 fontWeight: window.theme.terminal.fontWeight || "normal",
                 fontWeightBold: window.theme.terminal.fontWeightBold || "bold",
                 letterSpacing: window.theme.terminal.letterSpacing || 0,
                 lineHeight: window.theme.terminal.lineHeight || 1,
                 scrollback: 1500,
                 bellStyle: "none",
-                allowProposedApi:"true",
-                env: {
-                   'LANG': 'zh_CN.UTF-8'
-                },
                 theme: {
                     foreground: window.theme.terminal.foreground,
                     background: window.theme.terminal.background,
@@ -149,22 +141,17 @@ class Terminal {
             this.term.open(document.getElementById(opts.parentId));
 
             this.term.loadAddon(new WebglAddon());
-            this.term.loadAddon( new CanvasAddon());
             let ligaturesAddon = new LigaturesAddon();
             this.term.loadAddon(ligaturesAddon);
-            let unicode11Addon  = new Unicode11Addon();
-            this.term.loadAddon(unicode11Addon);
-            this.term.unicode.activeVersion ='11';
 
-            this.term.loadAddon( new WebLinksAddon());
             this.term.attachCustomKeyEventHandler(e => {
                 window.keyboard.keydownHandler(e);
                 return true;
             });
             // Prevent soft-keyboard on touch devices #733
-            //document.querySelectorAll('.xterm-helper-textarea').forEach(textarea => textarea.setAttribute('readonly', 'readonly'))
+            document.querySelectorAll('.xterm-helper-textarea').forEach(textarea => textarea.setAttribute('readonly', 'readonly'))
             this.term.focus();
-           
+
             this.Ipc.send("terminal_channel-"+this.port, "Renderer startup");
             this.Ipc.on("terminal_channel-"+this.port, (e, ...args) => {
                 switch(args[0]) {

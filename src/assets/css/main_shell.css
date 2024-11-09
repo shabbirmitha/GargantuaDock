@@ -5,7 +5,7 @@ section#main_shell {
     /* border: 0.18vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.5); */
     /* border-radius: 0.278vh; */
 
-    --aug-border-all: 0.18vh;
+    --aug-border: 0.18vh;
     --aug-border-bg: rgb(var(--color_r), var(--color_g), var(--color_b));
     --aug-border-opacity: 0.5;
     display: flex;
@@ -23,21 +23,7 @@ h1#main_shell_greeting {
     opacity: 0;
     transition: opacity .5s cubic-bezier(0.4, 0, 1, 1);
 }
-@keyframes rotate {
-    0% { transform: rotateY(0deg); }
-    25% { transform: rotateY(90deg); }
-    50% { transform: rotateY(180deg); }
-    75% { transform: rotateY(270deg); }
-    100% { transform: rotateY(360deg); }
-  }
-#shell-background{
-    position: absolute;
-    margin-top: 50px;
-    right: 30px;
-    opacity: 0;
-    font-size: 15vh;
-    animation: rotate 3s infinite;
-}
+
 h1#main_shell_greeting > em {
     font-style: normal;
     font-weight: bold;
@@ -119,7 +105,7 @@ div#main_shell_innercontainer pre {
 
 div#main_shell_innercontainer pre.active {
     z-index: inherit;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 div#main_shell_innercontainer pre#terminal1 {

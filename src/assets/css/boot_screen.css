@@ -104,13 +104,3 @@ section#boot_screen h1.glitch::after {
     from {transform: translateY(-100%) translateX(1%);}
     to {transform: translateY(-100%) translateX(3%);}
 }
-
-footer{
-    position: absolute;
-    bottom: 30px; 
-    width: 100%;
-    text-align: center;
-}
-footer #boot-logo{
-    font-size: 56px;
-}

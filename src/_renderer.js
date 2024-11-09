@@ -98,15 +98,6 @@ window._loadTheme = theme => {
     let mainFont = new FontFace(theme.cssvars.font_main, `url("${path.join(fontsDir, theme.cssvars.font_main.toLowerCase().replace(/ /g, '_')+'.woff2').replace(/\\/g, '/')}")`);
     let lightFont = new FontFace(theme.cssvars.font_main_light, `url("${path.join(fontsDir, theme.cssvars.font_main_light.toLowerCase().replace(/ /g, '_')+'.woff2').replace(/\\/g, '/')}")`);
     let termFont = new FontFace(theme.terminal.fontFamily, `url("${path.join(fontsDir, theme.terminal.fontFamily.toLowerCase().replace(/ /g, '_')+'.woff2').replace(/\\/g, '/')}")`);
-    let clockFontFamily=theme.cssvars.font_main;
-    if(theme.clock&&theme.clock.fontFamily){
-        clockFontFamily=theme.clock.fontFamily;
-    }
-    let clockFont = new FontFace(clockFontFamily, `url("${path.join(fontsDir, clockFontFamily.toLowerCase().replace(/ /g, '_')+'.woff2').replace(/\\/g, '/')}")`);
-
-    let uegiconsvgFont=new FontFace("ueg-icon-svg",`url("${path.join(fontsDir, 'ueg-icon.svg').replace(/\\/g, '/')}")`);
-    let uegiconttfFont=new FontFace("ueg-icon-ttf",`url("${path.join(fontsDir, 'ueg-icon.ttf').replace(/\\/g, '/')}")`);
-    let uegiconwoffFont=new FontFace("ueg-icon-woff",`url("${path.join(fontsDir, 'ueg-icon.woff').replace(/\\/g, '/')}")`);
 
     document.fonts.add(mainFont);
     document.fonts.load("12px "+theme.cssvars.font_main);
@@ -117,29 +108,17 @@ window._loadTheme = theme => {
     document.fonts.add(termFont);
     document.fonts.load("12px "+theme.terminal.fontFamily);
 
-    document.fonts.add(uegiconsvgFont);
-    document.fonts.load("12px ueg-icon-svg");
-    document.fonts.add(uegiconttfFont);
-    document.fonts.load("12px ueg-icon-ttf");
-    document.fonts.add(uegiconwoffFont);
-    document.fonts.load("12px ueg-icon-woff");
-
-    document.fonts.add(clockFont);
-    document.fonts.load("12px "+clockFontFamily);
-
     document.querySelector("head").innerHTML += `<style class="theming">
     :root {
         --font_main: "${window._purifyCSS(theme.cssvars.font_main)}";
         --font_main_light: "${window._purifyCSS(theme.cssvars.font_main_light)}";
         --font_mono: "${window._purifyCSS(theme.terminal.fontFamily)}";
-        --font_clock: "${window._purifyCSS(clockFontFamily)}";
         --color_r: ${window._purifyCSS(theme.colors.r)};
         --color_g: ${window._purifyCSS(theme.colors.g)};
         --color_b: ${window._purifyCSS(theme.colors.b)};
         --color_black: ${window._purifyCSS(theme.colors.black)};
         --color_light_black: ${window._purifyCSS(theme.colors.light_black)};
         --color_grey: ${window._purifyCSS(theme.colors.grey)};
-        --hot-blue: rgb(var(--color_r),var(--color_g),var(--color_b));
       
         /* Used for error and warning modals */
         --color_red: ${window._purifyCSS(theme.colors.red) || "red"};
@@ -231,9 +210,6 @@ window.audioManager = new AudioManager();
 // See #223
 remote.app.focus();
 
-remote.app.commandLine.appendSwitch('enable-features', 'InputMethod');
-remote.app.commandLine.appendSwitch('lang', 'zh-CN');
-
 let i = 0;
 if (window.settings.nointro || window.settings.nointroOverride) {
     initGraphicalErrorHandling();
@@ -316,7 +292,7 @@ async function displayTitleScreen() {
 
     document.body.setAttribute("class", "");
     bootScreen.setAttribute("class", "center");
-    bootScreen.innerHTML = "<h1 data-augmented-ui='border tr-clip bl-clip'>Gargantua</h1><footer><span id='boot-logo' class='ueg-icon-logo'></span></footer>";
+    bootScreen.innerHTML = "<h1 augmented-ui='bl-clip tr-clip exe'>Gargantua</h1><footer><span id='boot-logo' class='ueg-icon-1'></span></footer>";
     let title = document.querySelector("section > h1");
 
     await _delay(200);
@@ -372,14 +348,9 @@ async function getDisplayName() {
 async function initUI() {
     document.body.innerHTML += `<section class="mod_column" id="mod_column_left">
         <h3 class="title"><p>PANEL</p><p>SYSTEM</p></h3>
-    </section>
-    <section id="main_top">
-    <h3><span class="ueg-icon-logo"></span></h3>
-    </section>
-    <section id="main_shell" style="height:0%;width:0%;opacity:0;margin-bottom:30vh;" data-augmented-ui="border tr-clip bl-clip">
+    <section id="main_shell" style="height:0%;width:0%;opacity:0;margin-bottom:30vh;" augmented-ui="bl-clip tr-clip exe">
         <h3 class="title" style="opacity:0;"><p>TERMINAL</p><p>MAIN SHELL</p></h3>
         <h1 id="main_shell_greeting"></h1>
-        <div class="ueg-icon-UEG-all" id="shell-background"></div>
     </section>
     <section class="mod_column" id="mod_column_right">
         <h3 class="title"> <p >PANEL</p><p>NETWORK</p></h3>
@@ -401,7 +372,7 @@ async function initUI() {
     document.body.innerHTML += `
     <section id="filesystem" style="width: 0px;" class="${window.settings.hideDotfiles ? "hideDotfiles" : ""} ${window.settings.fsListView ? "list-view" : ""}">
     </section>
-    <section id="keyboard" style="opacity:0;"  data-augmented-ui="tl-clip tr-clip br-clip bl-clip border">
+    <section id="keyboard" style="opacity:0;" augmented-ui="bl-clip tr-clip exe">
     </section>`;
     window.keyboard = new Keyboard({
         layout: path.join(keyboardsDir, settings.keyboard+".json"),
@@ -418,9 +389,9 @@ async function initUI() {
 
     getDisplayName().then(user => {
         if (user) {
-            greeter.innerHTML += `欢迎回来, <em>${user}</em>`;
+            greeter.innerHTML += `Welcome back, <em>${user}</em>`;
         } else {
-            greeter.innerHTML += "欢迎回来，指挥官";
+            greeter.innerHTML += "Welcome back";
         }
     });
 
@@ -446,8 +417,6 @@ async function initUI() {
     await _delay(400);
 
     greeter.remove();
-    await _delay(400);
-    document.getElementById("shell-background").setAttribute("style", "opacity: 1;");
 
     // Initialize modules
     window.mods = {};
@@ -506,16 +475,12 @@ async function initUI() {
             <pre id="terminal3"></pre>
             <pre id="terminal4"></pre>
         </div>`;
-    process.env.LC_CTYPE = 'zh_CN.UTF-8';
+
     window.term = {
         0: new Terminal({
             role: "client",
             parentId: "terminal0",
             port: window.settings.port || 3000,
-            env: {
-                'LANG': 'zh_CN.UTF-8',
-                "LC_CTYPE":"zh_CN"
-            }
         })
     };
    
