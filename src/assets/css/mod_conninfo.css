@@ -1,0 +1,122 @@
+div#mod_conninfo {
+    border-top: 0.092vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.3);
+    font-family: var(--font_main_light);
+    letter-spacing: 0.092vh;
+    padding: 0.645vh 0vh;
+    display: flex;
+}
+
+div#mod_conninfo::before {
+    content: "";
+    border-left: 0.092vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.3);
+    align-self: flex-start;
+    position: relative;
+    left: -0.092vh;
+    top: -1.111vh;
+    height: 0.833vh;
+}
+
+div#mod_conninfo::after {
+    content: "";
+    border-right: 0.092vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.3);
+    position: relative;
+    right: -0.092vh;
+    top: -1.111vh;
+    height: 0.833vh;
+}
+
+div#mod_conninfo_innercontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+div#mod_conninfo h1 {
+    font-size: 1.48vh;
+    margin: 0vh;
+    margin-bottom: -1vh;
+    width: 98%;
+}
+
+div#mod_conninfo h2 {
+    font-size: 1.4vh;
+    margin: 0vh;
+    margin-bottom: -0.7vh;
+    width: 98%;
+    opacity: .5;
+}
+
+div#mod_conninfo i {
+    font-style: normal;
+    font-size: 1.20vh;
+    opacity: 0.5;
+    text-align: right;
+    display: inline-block;
+    position: relative;
+    bottom: 1.5vh;
+    width: 100%;
+}
+
+div#mod_conninfo canvas {
+    width: 100%;
+    height: 8.7vh;
+    z-index: 10;
+    border-top: 0.092vh dashed rgba(var(--color_r), var(--color_g), var(--color_b), 0.3);
+    border-bottom: 0.092vh dashed rgba(var(--color_r), var(--color_g), var(--color_b), 0.3);
+    margin: 0.46vh 0vh;
+    opacity: 1;
+}
+
+div#mod_conninfo canvas#mod_conninfo_canvas_top {
+    border-bottom: none;
+    margin-bottom: 0vh;
+}
+
+div#mod_conninfo canvas#mod_conninfo_canvas_bottom {
+    border-top: 0.139vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.4);
+    margin-top: -0.092vh;
+}
+
+div#mod_conninfo h3:last-child {
+    position: absolute;
+    font-size: 2vh;
+    z-index: 15;
+    opacity: 0;
+    color: red;
+    transition: opacity 1s ease-out;
+    transition-duration: 1s;
+}
+
+div#mod_conninfo.offline canvas {
+    opacity: 0.3;
+}
+
+/*0%开始，100%结束*/
+@keyframes scale{
+    0%{box-shadow: 0 0 10px rgb(184, 34, 0) inset,0 0 50px rgb(184, 43, 0); transform: skew(-10deg);  filter: blur(0);}
+    25%{box-shadow:none;transform: skew(0deg); filter: blur(1px);}
+    50%{box-shadow: 0 0 10px rgb(184, 34, 0) inset,0 0 50px rgb(184, 43, 0); transform: skew(0deg);  filter: blur(2px);}
+    61% { transform: skew(10deg); filter: blur(3px);}
+    75%{box-shadow:none;transform: skew(0deg); filter: blur(2px);}
+    100% {box-shadow: 0 0 10px rgb(184, 34, 0) inset,0 0 50px rgb(184, 43, 0);transform: skew(0deg); filter: blur(1px);}
+}
+
+div#mod_conninfo.offline h3:last-child {
+    opacity: 1;
+    display: block;
+    padding: 2vh 2vw;
+    background-color: rgba(255, 0, 0, 0.1);
+    border-left:6px solid red ;
+    border-right:6px solid red ;
+    transition: all 1s ease-in;
+    transition-duration: 1s;
+    --aug-border-all: 20px;
+    --aug-border-bg: rgba(255, 0, 0, 0.1);
+    animation: scale 2s infinite cubic-bezier(0,0,.49,1.02);
+    animation-delay: 200ms;
+    
+}
+
+
